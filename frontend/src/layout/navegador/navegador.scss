@@ -1,0 +1,134 @@
+.nav_container {
+  // width: 100%;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: #fff;
+
+  div {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1rem;
+  }
+}
+
+//seccion 1
+.nav_seccion1 {
+  display: flex;
+  align-items: center;
+
+  .sidebar__close {
+    cursor: pointer;
+    font-size: 25px;
+    color: #424242;
+    margin-right: 10px;
+
+    @media (max-width: 780px) {
+      display: none;
+    }
+  }
+
+  .nav_link {
+    color: #424242;
+    margin-right: 15px;
+    text-decoration: none !important ;
+    font-size: 1em;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+  }
+  :hover {
+    color: rgb(0, 119, 255);
+  }
+}
+
+//contenedor search
+.contenedor_input {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
+
+  .input_search {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #eeeded;
+    border-radius: 5px;
+    padding: 0.5rem 2.5rem 0.5rem 0.5rem;
+  }
+  .icon_search {
+    position: absolute;
+    color: #424242;
+    right: 0px;
+    margin-right: 0.9rem;
+  }
+}
+
+//seccion 2
+.nav_seccion2 {
+  display: flex;
+  align-items: center;
+
+  //toggle de modo dark
+  .div_use_dark {
+    position: relative;
+    margin-right: 8px;
+    display: flex;
+    padding: 0 4px;
+    align-items: center;
+    justify-content: space-between;
+    width: 55px;
+    height: 26px;
+    background-color: aqua;
+    border-radius: 15px;
+    box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+    
+    
+    .togg {
+      cursor: pointer;
+      position: absolute;
+      display: inline-block;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      background-color: #fff;
+      background-color: rgb(12, 13, 43);
+      transition: all 0.4s ease;
+      box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+    }
+    .toggTrue {
+      right: 0;
+    }
+    .toggFalse {
+      right: 25px;
+    }
+  }
+
+  .sidebar__close2 {
+    cursor: pointer;
+    margin-left: 10px;
+    display: none;
+    font-size: 25px;
+    color: #424242;
+    @media (max-width: 780px) {
+      display: block;
+    }
+  }
+
+  .btn_exit {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 500;
+    height: 35px;
+    width: 90px;
+    background-color: #387bb9;
+  }
+}

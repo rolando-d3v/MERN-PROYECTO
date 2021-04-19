@@ -1,0 +1,120 @@
+.bg_login2 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  // background-size: contain;
+
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_login2 {
+  background-color: #ffffff;
+  width: 440px;
+  height: 480px;
+  padding: 44px;
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+
+  .div_login {
+    width: 100%;
+    .logo {
+      margin-bottom: 13px;
+    }
+
+    .body_login {
+      .text_login {
+        color: #000;
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .text_label {
+        color: #424242;
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin-bottom: 13px;
+      }
+
+      .div_input_select {
+        outline: none;
+        width: 100%;
+        height: 35px;
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-bottom: 15px;
+
+        option:not(:checked) {
+          background-color: #fff;
+        }
+
+        option:is(:checked) {
+          background-color: #0067b8;
+        }
+      }
+
+      .div_input {
+        border-bottom: 0.5px solid #6e6a6a;
+        margin-bottom: 20px;
+        .input_login {
+          height: 36px;
+          width: 100%;
+          outline: none;
+          border: none;
+        }
+      }
+
+      h3 {
+        color: #424242;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 0.8rem;
+      }
+    }
+
+    .div_check {
+      display: flex;
+      align-items: center;
+
+      label {
+        margin-left: 10px;
+        font-size: 15px;
+      }
+    }
+
+    .btn_login {
+      float: right;
+      height: 35px;
+      width: 140px;
+      outline: none;
+      border: none;
+      color: #fff;
+      background-color: #0067b8;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container_login2 {
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 25px;
+    display: flex;
+    justify-content: center;
+
+    .div_login {
+      width: 400px;
+      .body_login {
+        h3 {
+          color: #0067b8;
+          margin-bottom: 20px;
+          font-weight: 400;
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; //quitar espaciados de las cajas
+  font-family: "Poppins", sans-serif;
+  
+}
+
+a {
+  text-decoration: none !important;
+  // text-decoration: none;
+}
+
+a {
+  text-decoration: underline;
+}
+
+
+//className para modo dark
+.themeDark {
+  background-color: #000c1b;
+  color: white;
+  transition: all 0.35s ease-in-out;
+}
+
+.themeLight {
+  background-color: rgb(233, 231, 231);
+  transition: all 0.35s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+//funcion para remover el scroll del body
+.removeScrollBody {
+  overflow: hidden;
+}  
+//quita el scroll de un div o box
+.detscroll-hidden::-webkit-scrollbar {
+  display: none;
+}  
+
+
+

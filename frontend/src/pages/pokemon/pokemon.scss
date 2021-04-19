@@ -1,0 +1,39 @@
+.pokemon {
+    margin: 0;
+    width: 100%;
+    grid-gap: 10px;
+    display: grid;
+    grid-template-areas: 'jumbo jumbo jumbo photo_poke'
+                         'jumbo jumbo jumbo photo_poke';
+
+    .jumbo {
+      grid-area: jumbo;
+      margin: 1em;  
+      text-align: center;
+       background-color: #e63131; 
+
+       .logo_poke{
+           width: 50%;
+       }
+    }
+    .photo_poke {
+        grid-area: photo_poke;
+        margin: 1.6em; 
+        
+        .poke{
+            width: 100%;
+            border: 5px solid #4579c7;
+            box-shadow: 1px 1px 15px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 968px) {
+    .pokemon {
+        display: grid;
+        grid-template-areas: 'jumbo jumbo jumbo jumbo'
+                             'photo_poke photo_poke photo_poke photo_poke';
+    }
+     
+}

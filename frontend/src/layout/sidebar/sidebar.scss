@@ -1,0 +1,121 @@
+.sidebar {
+  bottom: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  // overflow: auto;
+  z-index: 99;
+
+  transform: translate3d(-100%, 0, 0);
+  visibility: visible;
+
+
+  // transform: translateX(-100%);
+  transition: all 0.4s ease;
+  background-color: #212121;
+
+  @media (max-width: 780px) {
+    // visibility: visible;
+    // transform: translate3d(0%, 0, 0);
+    // transform: translateX(-100%);
+    // background-color: red;
+  }
+}
+//aparece el sidebar
+.sidebar-visible.sidebar {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+
+  // transform: translateX(0%);
+}
+
+//header  logo
+.header_logo {
+  border-bottom: 1px solid #615b5b;
+  padding: 9px 1.7rem;
+  div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    font-size: 1.2rem;
+    .text_logo {
+      font-size: 1.3rem;
+      margin-left: 5px;
+      padding: 0;
+      // line-height: 50px;
+      letter-spacing: 1px;
+    }
+    &:hover {
+      color: #00a2ff;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+//header  avatar
+.header_avatar {
+  border-bottom: 1px solid #615b5b;
+  padding: 9px 1.7rem;
+  div {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  img {
+    width: 13%;
+    margin-right: 12px;
+    border-radius: 50%;
+  }
+}
+
+//BUTTON  DE SIDEBAR
+.div_buttonx {
+  margin: 0.5rem 0;
+  .buttonx {
+    background-color: #3179a8;
+    outline: none;
+    border-radius: 3px;
+    text-align: start;
+    width: 90%;
+    border: none;
+    color: #fafdff;
+    margin: 0.3em 1em;
+    padding: 0.55em 1.7em;
+    size: 1rem;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+
+    &:hover {
+      box-shadow: 0px 0px 4px #fff;
+      // background-color: #6f31a8;
+    }
+  }
+}
+
+.div_links {
+  padding: 9px 1.1rem;
+  display: flex;
+  flex-direction: column;
+
+  .sidebar_link {
+    text-align: start;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    padding: 0.5em 0.8em;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #42424242;
+      transition: all 0.3s ease;
+    }
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+}
