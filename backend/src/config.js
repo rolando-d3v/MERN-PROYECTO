@@ -13,7 +13,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 //CONFIG DB MONGODB
 let urlDB;
 if (process.env.NODE_ENV === "dev") {
-  urlDB = "mongodb://localhost/carritodb02";
+  urlDB = "mongodb://localhost/dashpoke";
 } else {
   urlDB = "mongodb+srv://abraham:jIjRdwT5uLjmCu2L@cafe.8wspk.mongodb.net/cafe";
 }

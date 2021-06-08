@@ -13,7 +13,7 @@ const linkSidebar = [
   { name: "Home", url: "/tabla", icon: <FaIcons.FaHome /> },
   { name: "Tools", url: "/", icon: <FaIcons.FaTools /> },
   { name: "Formulario", url: "/preguntas", icon: <FaIcons.FaFolder /> },
-  { name: "Calendario", url: "/tabla", icon: <FaIcons.FaCalendarAlt /> },
+  { name: "Calendario", url: "/buscar", icon: <FaIcons.FaCalendarAlt /> },
 ];
 
 export default function Sidebar() {

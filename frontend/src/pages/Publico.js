@@ -3,7 +3,7 @@ import React from 'react'
 export default function Publico() {
     return (
         <div>
-            <h3>public</h3>
+            <h3>public  para pokemon </h3>
         </div>
     )
 }
