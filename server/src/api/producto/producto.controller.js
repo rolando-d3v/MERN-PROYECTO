@@ -5,7 +5,6 @@ import Producto from "./producto.model";
 //==============================
 export const createProducto = async (req, res) => {
   try {
-
     const producto = new Producto()
     producto.name = req.body.name;
     producto.preciounidad = req.body.preciounidad;
@@ -13,23 +12,28 @@ export const createProducto = async (req, res) => {
     producto.filename = req.file.filename;
     producto.size = req.file.size;
     producto.originalname = req.file.originalname;
-    producto.path = req.body.path;
+    producto.path ='/upload/'+ req.file.filename;
 
-    console.log(req.file);
-
-    return res.json(producto);
-    // return res.json({ msn: "Producto create success" });
+    console.log(producto);
+    await producto.save()
+    return res.json({ msn: "Producto create success" });
   } catch (err) {
     return res.json({ msn: "Error server", err });
   }
 };
+
+
 
 //==============================
 //OBTIENE ALL PRODUCTOS
 //==============================
 export const getProductos = async (req, res) => {
   try {
-    return res.json({ msn: "hola peru" });
+
+    const producto = await Producto.find({})
+  
+
+    return res.json(producto);
   } catch (err) {
     return res.json({ msn: "Error server", err });
   }
