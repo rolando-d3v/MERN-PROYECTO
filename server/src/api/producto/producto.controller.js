@@ -34,7 +34,57 @@ export const getProductos = async (req, res) => {
       {},
       { limit, page, sort: { createdAt: -1 } }
     );
+    return res.json(producto);
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
+  }
+};
 
+
+//==============================
+//OBTIENE ONE PRODUCTOID
+//==============================
+export const getProductoId = async (req, res) => {
+  try {
+    const producto = await Producto.findById({ _id: req.params.proId });
+    if (!producto) {
+      return res.json({msn: 'ID not found'})
+    }
+    return res.json(producto);
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
+  }
+};
+
+
+
+//==============================
+//DELETE ONE PRODUCTOID
+//==============================
+export const deleteProducto = async (req, res) => {
+  try {
+    const producto = await Producto.findById({ _id: req.params.proId });
+    if (!producto) {
+      return res.json({msn: 'ID not found'})
+    }
+    return res.json(producto);
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
+  }
+};
+
+
+
+
+//==============================
+//ENDPOINT DE  BUSCAR  PRODUCTOID
+//==============================
+export const buscarProducto = async (req, res) => {
+  try {
+    const producto = await Producto.findById({ _id: req.params.proId });
+    if (!producto) {
+      return res.json({msn: 'ID not found'})
+    }
     return res.json(producto);
   } catch (err) {
     return res.json({ msn: "Error server", err });
