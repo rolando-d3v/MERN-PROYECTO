@@ -1,7 +1,7 @@
 import Producto from "./producto.model";
 import { unlink } from "fs-extra";
 import path from "path";
-import { unlinkSync } from "fs";
+
 
 //==============================
 //CREATE ONE PRODUCTO
@@ -73,8 +73,8 @@ export const deleteProducto = async (req, res) => {
     //elimina el archivo de upload
     await unlink(path.resolve(__dirname, "../../public" + producto.path));
     res.json({ ok: true, msn: "producto eliminado " + producto.filename });
-  } catch (error) {
-    res.send(error);
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
   }
 };
 
@@ -83,16 +83,13 @@ export const deleteProducto = async (req, res) => {
 //==============================
 export const buscarProducto = async (req, res) => {
   try {
-    const producto = await productoModel.findOneAndDelete({
-      _id: req.params.proId,
-    });
+    //buscar con RegExp
+    const nameParams = req.params.name;
+    let terminoBuscar = new RegExp(nameParams, "i");
+    const producto = await Producto.find({ name: terminoBuscar });
 
-    if (!producto) {
-      return res.json({ msn: "ID not found" });
-    }
-    await unlink(path.resolve(`./src/public${producto.path}`));
-    res.json({ ok: true, message: "producto eliminado " + producto.filename });
-  } catch (error) {
-    res.send(error);
+    res.json(producto);
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
   }
 };
