@@ -1,4 +1,7 @@
 import Producto from "./producto.model";
+import { unlink } from "fs-extra";
+import path from "path";
+import { unlinkSync } from "fs";
 
 //==============================
 //CREATE ONE PRODUCTO
@@ -16,7 +19,7 @@ export const createProducto = async (req, res) => {
 
     console.log(producto);
     await producto.save();
-    return res.json({ msn: "Producto create success" });
+    return res.json({ msn: "Producto create success ✔️" });
   } catch (err) {
     return res.json({ msn: "Error server", err });
   }
@@ -40,7 +43,6 @@ export const getProductos = async (req, res) => {
   }
 };
 
-
 //==============================
 //OBTIENE ONE PRODUCTOID
 //==============================
@@ -48,7 +50,7 @@ export const getProductoId = async (req, res) => {
   try {
     const producto = await Producto.findById({ _id: req.params.proId });
     if (!producto) {
-      return res.json({msn: 'ID not found'})
+      return res.json({ msn: "ID not found" });
     }
     return res.json(producto);
   } catch (err) {
@@ -56,37 +58,41 @@ export const getProductoId = async (req, res) => {
   }
 };
 
-
-
 //==============================
-//DELETE ONE PRODUCTOID
+//DELETE ONE PRODUCTO
 //==============================
 export const deleteProducto = async (req, res) => {
   try {
-    const producto = await Producto.findById({ _id: req.params.proId });
+    const producto = await Producto.findOneAndDelete({
+      _id: req.params.proId,
+    });
+
     if (!producto) {
-      return res.json({msn: 'ID not found'})
+      return res.status(405).json({ msn: "ID not found" });
     }
-    return res.json(producto);
-  } catch (err) {
-    return res.json({ msn: "Error server", err });
+    //elimina el archivo de upload
+    await unlink(path.resolve(__dirname, "../../public" + producto.path));
+    res.json({ ok: true, msn: "producto eliminado " + producto.filename });
+  } catch (error) {
+    res.send(error);
   }
 };
-
-
-
 
 //==============================
 //ENDPOINT DE  BUSCAR  PRODUCTOID
 //==============================
 export const buscarProducto = async (req, res) => {
   try {
-    const producto = await Producto.findById({ _id: req.params.proId });
+    const producto = await productoModel.findOneAndDelete({
+      _id: req.params.proId,
+    });
+
     if (!producto) {
-      return res.json({msn: 'ID not found'})
+      return res.json({ msn: "ID not found" });
     }
-    return res.json(producto);
-  } catch (err) {
-    return res.json({ msn: "Error server", err });
+    await unlink(path.resolve(`./src/public${producto.path}`));
+    res.json({ ok: true, message: "producto eliminado " + producto.filename });
+  } catch (error) {
+    res.send(error);
   }
 };
