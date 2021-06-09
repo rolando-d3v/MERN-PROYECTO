@@ -5,9 +5,9 @@ const productoSchema = new Schema(
     name: { type: String, require: true },
     filename: { type: String, required: true },
     size: { type: Number, required: true },
-    precioUnitario: { type: Number, required: true },
+    preciounitario: { type: Number, required: true },
     path: String,
-    originalName: String,
+    originalname: String,
     description: String,
   },
   { timestamps: true }
