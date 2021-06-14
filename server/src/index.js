@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import productoRoutes from "./api/producto/producto.routes";
+import userRoutes from "./api/user/user.routes";
 
 //config app
 import "./config/config";
@@ -24,3 +25,4 @@ app.use(express.urlencoded({ extends: false }));
 
 //routes
 app.use("/productos", productoRoutes);
+app.use("/users", userRoutes);
