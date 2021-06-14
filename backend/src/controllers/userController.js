@@ -64,7 +64,7 @@ exports.getUser = async (req, res) => {
 };
 
 
-//_* ENDPOINT PARA DELETED A USER
+//_* DELETE A USER
 exports.deleteUser = async (req, res) => {
   try {
     const user = await userModel.findOneAndDelete({ _id: req.params.idUser });

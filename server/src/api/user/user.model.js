@@ -19,7 +19,7 @@ const userSchema = new Schema(
 
 
 
-// FUNCION PARA NO MOSTRAR EL PASSWORD EN EL JSON DEL BACK-END
+// function to not show password in JSON  BACK-END
 userSchema.methods.toJSON = function() {
     let user = this;
     let userObject = user.toObject();

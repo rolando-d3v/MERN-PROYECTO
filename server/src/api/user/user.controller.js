@@ -26,7 +26,7 @@ export const createUser = async (req, res) => {
 };
 
 //==============================
-//OBTIENE ALL USER
+//GET ALL USERS
 //==============================
 export const getUsers = async (req, res) => {
   try {
@@ -38,7 +38,7 @@ export const getUsers = async (req, res) => {
 };
 
 //==============================
-//OBTIENE ALL USER
+//GET A USER
 //==============================
 export const getUserId = async (req, res) => {
   try {
@@ -57,17 +57,22 @@ export const getUserId = async (req, res) => {
   }
 };
 
-
-
 //==============================
 //DELETE A USER
 //==============================
 
 export const deleteUser = async (req, res) => {
-try {
-  const user = await User.findByIdAndDelete({_id: req.params.userId})
-  
-} catch (err) {
-  return res.json({msn: 'Error server', err})
-}
-} 
+  try {
+    const user = await User.findByIdAndDelete({ _id: req.params.userId });
+    if (!user) {
+      res.status(404).json({
+        msn: "user not found",
+      });
+    }
+    res.json({
+      msn: `User: ${user.username} => deleted successfully`,
+    });
+  } catch (err) {
+    return res.json({ msn: "Error server", err });
+  }
+};
