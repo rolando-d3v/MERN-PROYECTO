@@ -1,6 +1,11 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config';
 
+
+
+//==============================
+//authenticate a user with a token
+//==============================
 export const authToken = async (req, res, next) => {
 try {
     const token = req.header("auth-token");
@@ -15,3 +20,10 @@ try {
     return res.json({ msn: "authetication incorrect", err })
 }
 };
+
+
+
+
+//==============================
+//authenticate a user with a token
+//==============================
