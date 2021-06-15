@@ -5,6 +5,9 @@ import productoRoutes from "./api/producto/producto.routes";
 import userRoutes from "./api/user/user.routes";
 import loginRoutes from './api/login/login.routes';
 
+//creacion de roles al iniciar la app
+import { createdSetupRoles } from './api/role/iniciarSetupRoles';
+
 //config app
 import "./config/config";
 
@@ -13,6 +16,7 @@ import "./config/db";
 
 //server app
 const app = express();
+createdSetupRoles()
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`🔥  🚀  Server port ➡️  ${port} 😃  ✔️ ••• ✨ `);
