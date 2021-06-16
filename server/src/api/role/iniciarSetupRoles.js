@@ -10,17 +10,17 @@ export const createdSetupRoles = async () => {
 
     // Promise.all es para ejecutar todo un conjunto de  promesas que necesitan await
     const values = await Promise.all([
-      new Role({ name: "user" }).save(),
-      new Role({ name: "admin" }).save(),
-      new Role({ name: "senales" }).save(),
+      new Role({ role: "user" }).save(),
+      new Role({ role: "admin" }).save(),
+      new Role({ role: "senales" }).save(),
     ]);
     console.log(values);
 
 
     //SEGUNDA FORMA DE HACER
-    // await new Role({ name: "user" }).save();
-    // await new Role({ name: "admin" }).save();
-    // await new Role({ name: "senales" }).save();
+    // await new Role({ role: "user" }).save();
+    // await new Role({ role: "admin" }).save();
+    // await new Role({ role: "senales" }).save();
 
   } catch (err) {
     console.log(err);

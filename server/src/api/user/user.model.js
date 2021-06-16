@@ -17,7 +17,7 @@ const userSchema = new Schema(
     },
     password: { type: String, required: true },
     estado: { type: Boolean, default: true },
-    role: [{ ref: "Role", type: Schema.Types.ObjectId }],
+    roles: [{ ref: "Role", type: Schema.Types.ObjectId }],
   },
   { timestamps: true, versionKey: false }
 );
