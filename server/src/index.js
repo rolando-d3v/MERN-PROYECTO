@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import path from 'path';
 import cors from "cors";
 import productoRoutes from "./api/producto/producto.routes";
 import userRoutes from "./api/user/user.routes";
@@ -27,6 +28,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extends: false }));
+app.use(express.static(path.join(__dirname, 'public')))
 
 //routes
 app.use("/productos", productoRoutes);
