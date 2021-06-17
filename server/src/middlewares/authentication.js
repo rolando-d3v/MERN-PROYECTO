@@ -23,18 +23,34 @@ export const authToken = async (req, res, next) => {
 //==============================
 //authenticate with role admin
 //==============================
-export const adminToken = async (req, res, next) => {
+export const adminRole = async (req, res, next) => {
   try {
     const roleAdmin = await Role.find({ _id: { $in: req.user.roles } });
-    console.log(roleAdmin);
-
     for (let i = 0; i < roleAdmin.length; i++) {
       if (roleAdmin[i].role === "admin") {
         next();
         return;
       }
     }
-    return res.status(403).json({msn: "Require Admin role ❗️❗️" });
+    return res.status(403).json({ msn: "Require Admin role ❗️❗️" });
+  } catch (err) {
+    return res.json({ msn: "authetication incorrect", err });
+  }
+};
+
+//==============================
+//authenticate with role senales
+//==============================
+export const senalesRole = async (req, res, next) => {
+  try {
+    const roleSenales = await Role.find({ _id: { $in: req.user.roles } });
+    for (let i = 0; i < roleSenales.length; i++) {
+      if (roleSenales[i].role === "senales") {
+        next();
+        return;
+      }
+    }
+    return res.status(403).json({ msn: "Require Senales role ❗️❗️" });
   } catch (err) {
     return res.json({ msn: "authetication incorrect", err });
   }
