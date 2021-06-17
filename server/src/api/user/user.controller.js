@@ -16,20 +16,15 @@ export const createUser = async (req, res) => {
     const emailExiste = await User.findOne({ email: req.body.email });
     if (emailExiste) return res.status(405).json({ msn: "El email ya existe" });
 
-    //create a role whit name user default, si el campo roles not exist
-    if (!req.body.roles) {
+    //mapea los roles por name y despues para ponerlos en user.roles por user._id
+    if (req.body.roles) {
+      const roleName = await Role.find({ role: { $in: req.body.roles } });
+      user.roles = roleName.map((rol) => rol._id);
+
+      //create a role whit name user default, si el campo roles not exist
+    } else {
       const roleDefault = await Role.findOne({ role: "user" });
       user.roles = [roleDefault._id];
-
-      //search the role es valid in database, si el campo roles exist
-    } else {
-      const roleMinuscula = req.body.roles.toLowerCase();
-      const roleUser = await Role.findOne({ role: roleMinuscula });
-      !roleUser && res.status(405).json({ msn: `${roleMinuscula} not found ` });
-
-      //mapea los roles por name y despues para ponerlos en user.roles por user._id
-      const roleName = await Role.find({ role: roleMinuscula });
-      user.roles = roleName.map((rol) => rol._id);
     }
 
     console.log(user);
@@ -40,13 +35,12 @@ export const createUser = async (req, res) => {
   }
 };
 
-
 //==============================
 //GET ALL USERS
 //==============================
 export const getUsers = async (req, res) => {
   try {
-    const user = await User.find({}).populate('roles');
+    const user = await User.find({}).populate("roles");
     return res.json(user);
   } catch (err) {
     return res.json({ msn: "Error server", err });
@@ -61,7 +55,7 @@ export const getUserId = async (req, res) => {
     const user = await User.findOne(
       { _id: req.params.userId },
       { password: 0 }
-    ).populate('roles');
+    ).populate("roles");
 
     if (!user) {
       return res.status(405).json({ msn: "user no found" });

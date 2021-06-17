@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import Role from "../api/role/role.model";
 import config from "../config/config";
 
 //==============================
@@ -9,8 +10,8 @@ export const authToken = async (req, res, next) => {
     const token = req.header("auth-token");
     if (!token) return res.status(404).json({ msn: "token not found  ❗️❗️" });
 
-    const verifyToken = jwt.verify(token, config.secret);
     //create a request with name the user
+    const verifyToken = jwt.verify(token, config.secret);
     req.user = verifyToken;
 
     next();
@@ -19,18 +20,22 @@ export const authToken = async (req, res, next) => {
   }
 };
 
-
-
 //==============================
-//authenticate a user with a token
+//authenticate with role admin
 //==============================
-export const tokenAdmin = (req, res) => {
-    try {
-        
-    } catch (err) {
-        return res.json({ msn: "authetication incorrect", err });
+export const adminToken = async (req, res, next) => {
+  try {
+    const roleAdmin = await Role.find({ _id: { $in: req.user.roles } });
+    console.log(roleAdmin);
+
+    for (let i = 0; i < roleAdmin.length; i++) {
+      if (roleAdmin[i].role === "admin") {
+        next();
+        return;
+      }
     }
-}
-
-
- 
+    return res.status(403).json({msn: "Require Admin role ❗️❗️" });
+  } catch (err) {
+    return res.json({ msn: "authetication incorrect", err });
+  }
+};
